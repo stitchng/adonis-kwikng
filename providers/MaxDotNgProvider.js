@@ -17,7 +17,9 @@ class MaxDotNgProvider extends ServiceProvider {
       const Env = this.app.use('Env')
       const MaxDotNgAPIClient = require('../src/MaxDotNg/index.js')
 
-      return new MaxDotNgAPIClient(require('maxng-nodejs'), Config, Env);
+      let client  = new MaxDotNgAPIClient(require('maxng-nodejs'), Config, Env);
+      
+      return client.agent;
     })
 
     this.app.alias('Adonis/Addons/Max', 'Max')
