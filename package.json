@@ -44,7 +44,7 @@
   },
   "dependencies": {
       "@adonisjs/generic-exceptions": "^2.0.1",
-      "maxdotng":"^0.0.1",
+      "maxng-nodejs":"^0.0.3",
       "debug": "^3.1.2"
   },
   "devDependencies": {
