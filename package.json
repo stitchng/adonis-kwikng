@@ -1,5 +1,5 @@
 {
-  "name":"adonisjs-maxdotng",
+  "name":"adonisjs-kwikng",
   "version":"0.1.1",
   "description":"An addon/plugin package to provide MaxDotNG automated last-mile delivery services in AdonisJS 4.1+",
   "main": "index.js",
