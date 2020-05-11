@@ -19,4 +19,4 @@ class KwikNgApiClient {
   }
 }
 
-module.exports = MaxDotNgApiClient
+module.exports = KwikNgApiClient
