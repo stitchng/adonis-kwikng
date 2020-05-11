@@ -33,11 +33,8 @@ class RefreshKwikToken {
        }
     } catch (err) {
       error = err;
-      
-      data = {vendor_details:{ vendor_id: '', user_id: '' }, access_token: ''}
-      req_timestamp = now
     }finally{
-      if(error !== null){
+      if(error === null){
         if(response.body.message === 'Logged in successfully.' 
             && response.body.status === 200){
             let token_ready = Date.now()
@@ -47,6 +44,9 @@ class RefreshKwikToken {
           
             data = response.body.data;
         }
+      }else{
+          data = {vendor_details:{ vendor_id: '', user_id: '' }, access_token: ''}
+          req_timestamp = now
       }
     }
     
