@@ -8,6 +8,16 @@ const providers = [
 ]
 ```
 
+## Registering middleware
+
+Register the following middleware inside `start/kernel.js` file. Place the kwikng middleware as a named middleware like so
+
+```js
+const namedMiddleware = {
+  kwik_token_refresh: 'Adonis/Middleware/RefreshKwikToken',
+}
+```
+
 ## Config
 
 The configuration is saved inside `config/kwikng.js` file. Tweak it accordingly.
