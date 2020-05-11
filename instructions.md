@@ -10,8 +10,8 @@ const providers = [
 
 ## Config
 
-The configuration is saved inside `config/maxdotng.js` file. Tweak it accordingly.
+The configuration is saved inside `config/kwikng.js` file. Tweak it accordingly.
 
 ## Docs
 
-To find out more, read the docs [here](https://github.com/stitchng/adonis-maxdotng).
+To find out more, read the docs [here](https://github.com/stitchng/adonis-kwikng).
