@@ -27,7 +27,7 @@ class KwikNgProvider extends ServiceProvider {
     this.app.bind('Adonis/Middleware/RefreshKwikToken', (app) => {
       const Config = this.app.use('Adonis/Src/Config');
       
-      let RefreshKwikToken = require('../Middleware/RefreshKwikToken')
+      let RefreshKwikToken = require('../src/KwikNg/Middleware/RefreshKwikToken')
       return new RefreshKwikToken(app.use('Adonis/Addons/Kwik'), Config);
     })
   }
