@@ -6,5 +6,6 @@ npm-debug.log
 test
 .travis.yml
 .editorconfig
+package-lock.json
 out
 .nyc_output
