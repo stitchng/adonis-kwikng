@@ -1,6 +1,6 @@
 # adonis-kwikng
 
-An addon/plugin package to provide KwikNG automated last-mile delivery services in AdonisJS 4.1+
+An addon/plugin package to provide KwikNG automated last-mile delivery services in AdonisJS 4.0+
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
@@ -56,18 +56,18 @@ An addon/plugin package to provide KwikNG automated last-mile delivery services 
                   timezone: '+60' /* West African Time: +1:00hr from UTC */, 
                   auto_assignment: 0, 
                   layout_type: 0, 
-                  team_id: "",
-                  amount: "1240.45",
+                  team_id: 1,
+                  amount: "1240.45", // Naira
                   total_no_of_tasks: 1,
                   total_service_charge: 23,
                   deliveries: [
                     {
                       "address": "No 4 Awgu Close, Garki, Area 3, Abuja",
-                      "name": "Premium Pensions PLC",
+                      "name": user.business_name,
                       "latitude": 9.0541091,
                       "longitude": 7.4349443,
                       "time": "2020-12-20 12:48:24",
-                      "phone": "+2348045334123",
+                      "phone": user.phone, // user phone number
                       "has_return_task": false,
                       "is_package_insured": 0,
                       "template_data": [ ]
@@ -75,23 +75,23 @@ An addon/plugin package to provide KwikNG automated last-mile delivery services 
                   ],
                   pickups: [
                     {
-                      "address": "Dyzn Clothing PLC",
+                      "address": "Dyzn Clothing LLC",
                       "name": "Dzyn Babe",
                       "latitude": 9.0392449,
                       "longitude": 7.4220623,
-                      "time": "2020-12-20 12:48:24",
+                      "time": "2020-12-20 11:27:11",
                       "phone": "+2349045739731",
-                      "email": "@gmail.com",
+                      "email": "dzyn.fash.ng@gmail.com",
                       "template_data": [ ]
                     }
                   ]
           
-          })
+          });
           
-          this.event.fire('mixpanel::event', {key: 'deliveryDispatched'});
+          this.event.fire('mixpanel::event', { key: 'deliveryDispatched' });
           
           return response.status(201).json({
-             data:response.body
+             data:response.body.data
           })
       }
   }
@@ -121,7 +121,7 @@ MIT
 
 ## Credits
 
-- [Ifeora Okechukwu <Head Of Technology - Oparand>](https://twitter.com/isocroft)
+- [Ifeora Okechukwu](https://twitter.com/isocroft)
     
 ## Contributing
 
