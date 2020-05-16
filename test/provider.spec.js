@@ -1,7 +1,7 @@
 'use strict'
 
 /*
- * adonis-maxdotng
+ * adonis-kwikng
  *
  * (c) Harminder Virk <virk@adonisjs.com>
  *
@@ -12,15 +12,18 @@
 const test = require('japa')
 const { ioc } = require('@adonisjs/fold')
 const { Config, Env } = require('@adonisjs/sink')
-const MaxDotNgProvider = require('../providers/MaxDotNgProvider.js')
+const KwikNgProvider = require('../providers/KwikNgProvider.js')
 
-let MaxDotNgInstance = null
+let KwikNgInstance = null
 
-test.group('AdonisJS InfoBipProvider Test(s)', (group) => {
+test.group('AdonisJS KwikNgProvider Test(s)', (group) => {
   group.beforeEach(() => {
     ioc.bind('Adonis/Src/Config', () => {
       let config = new Config()
-      config.set('maxdotng.apiKey', 'YWdJm94f8a309e09349ebc8e4eC')
+      config.set('kwikng.domain', 'test-client-1.kwik.delivery')
+      config.set('kwikng.email', 'basic.account@gmail.com')
+      config.set('kwikng.password', 'YWdJm94f8a30')
+      config.set('kwikng.timeout', '180000')
 
       return config
     })
@@ -34,15 +37,15 @@ test.group('AdonisJS InfoBipProvider Test(s)', (group) => {
     })
   })
 
-  test('instantiate without errors or side-effects [maxdotng]', (assert) => {
-    const provider = new MaxDotNgProvider(ioc)
+  test('instantiate without errors or side-effects [kwikng]', (assert) => {
+    const provider = new KwikNgProvider(ioc)
     provider.register()
 
-    InfoBipInstance = ioc.use('Adonis/Addons/Max')
+    KwikNgInstance = ioc.use('Adonis/Addons/Kwik').API
 
-    assert.isTrue(typeof InfoBipInstance.getAllDeliveryRequests === 'function')
-    assert.isTrue(typeof InfoBipInstance.getPickUpWindow === 'function')
-    assert.isTrue(typeof InfoBipInstance.getDeliveryRequestStatus === 'function')
-    assert.isTrue(typeof InfoBipInstance.scheduleDeliveryRequest === 'function')
+    assert.isTrue(typeof KwikNgInstance.createCorporate === 'function')
+    assert.isTrue(typeof KwikNgInstance.listAllCorporatesInvoices === 'function')
+    assert.isTrue(typeof KwikNgInstance.cancelDeliveryTask === 'function')
+    assert.isTrue(typeof KwikNgInstance.scheduleDeliveryTask === 'function')
   })
 })

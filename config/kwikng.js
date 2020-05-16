@@ -3,7 +3,7 @@
 const Env = use('Env')
 
 module.exports = {
-  
+
   /*
    |--------------------------------------------------------------------------
    | API Email
@@ -13,9 +13,9 @@ module.exports = {
    |
    |
    */
-    
-    email: Env.get('KWIKNG_API_LOGIN_EMAIL'),
-  
+
+  email: Env.get('KWIKNG_API_LOGIN_EMAIL'),
+
   /*
    |--------------------------------------------------------------------------
    | API Password
@@ -26,9 +26,8 @@ module.exports = {
    |
    */
 
-  
-    password: Env.get('KWKNG_API_LOGIN_PASSWORD'),
-  
+  password: Env.get('KWKNG_API_LOGIN_PASSWORD', 'xxxxxxxxxxxxx'),
+
   /*
    |--------------------------------------------------------------------------
    | API Domain
@@ -39,7 +38,18 @@ module.exports = {
    |
    */
 
-  
-    domain: Env.get('KWIKNG_API_LOGIN_DOMAIN', 'testclient-1.kwik.delivery')
-  
-};
+  domain: Env.get('KWIKNG_API_LOGIN_DOMAIN', 'app.kwik.delivery'),
+
+  /*
+   |--------------------------------------------------------------------------
+   | API Timeout
+   |--------------------------------------------------------------------------
+   |
+   |
+   |
+   |
+   */
+
+  timeout: Env.get('KWIKNG_API_LOGIN_TIMEOUT', '480000')
+
+}

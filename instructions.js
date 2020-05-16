@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * adonis-maxdotng
+ * adonis-kwikng
  *
  * @license MIT
  * @copyright Slynova - Romain Lanz <romain.lanz@slynova.ch>
@@ -12,9 +12,9 @@ const path = require('path')
 
 module.exports = async function (cli) {
   try {
-    await cli.makeConfig('maxdotng.js', path.join(__dirname, 'config/maxdotng.js'))
-    cli.command.completed('create', 'config/maxdotng.js')
+    await cli.makeConfig('kwikng.js', path.join(__dirname, 'config/kwikng.js'))
+    cli.command.completed('create', 'config/kwikng.js')
   } catch (error) {
-    // ignore if maxdotng.js already exists
+    // ignore if kwikng.js already exists
   }
 }

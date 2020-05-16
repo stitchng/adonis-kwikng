@@ -3,7 +3,6 @@
 const { ServiceProvider } = require('@adonisjs/fold')
 
 class KwikNgProvider extends ServiceProvider {
-
   /**
    * Register method called by ioc container
    *
@@ -17,18 +16,18 @@ class KwikNgProvider extends ServiceProvider {
       const Env = this.app.use('Env')
       const KwikNgApiClient = require('../src/KwikNg/index.js')
 
-      let client  = new KwikNgApiClient(require('kwik-nodejs'), Config, Env);
-      
-      return client;
-    });
+      let client = new KwikNgApiClient(require('kwik-node'), Config, Env)
 
-    this.app.alias('Adonis/Addons/Kwik', 'Kwik');
-    
+      return client
+    })
+
+    this.app.alias('Adonis/Addons/Kwik', 'Kwik')
+
     this.app.bind('Adonis/Middleware/RefreshKwikToken', (app) => {
-      const Config = this.app.use('Adonis/Src/Config');
-      
+      const Config = this.app.use('Adonis/Src/Config')
+
       let RefreshKwikToken = require('../src/KwikNg/Middleware/RefreshKwikToken')
-      return new RefreshKwikToken(app.use('Adonis/Addons/Kwik'), Config);
+      return new RefreshKwikToken(app.use('Adonis/Addons/Kwik'), Config)
     })
   }
 

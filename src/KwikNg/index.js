@@ -5,17 +5,21 @@ class KwikNgApiClient {
     let isProd = (Env.get('NODE_ENV') === 'production')
     this.API = new Agent(Config.get('kwikng.domain'), isProd)
   }
-  
+
   set accessToken (token) {
-    this.API.setAccessToken (token);
+    this.API.setAccessToken(token)
   }
-  
+
   set vendorId (id) {
-    this.API.setVendorId(id);
+    this.API.setVendorId(id)
   }
-  
+
   set userId (id) {
-    this.API.setUserId(id);
+    this.API.setUserId(id)
+  }
+
+  set cardId (id) {
+    this.API.setCardId(id)
   }
 }
 

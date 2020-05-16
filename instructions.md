@@ -14,7 +14,7 @@ Register the following middleware inside `start/kernel.js` file. Place the kwikn
 
 ```js
 const namedMiddleware = {
-  kwik_token_refresh: 'Adonis/Middleware/RefreshKwikToken',
+  kwik_token_fetch: 'Adonis/Middleware/RefreshKwikToken',
 }
 ```
 
