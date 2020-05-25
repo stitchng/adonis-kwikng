@@ -4,6 +4,7 @@ class RefreshKwikToken {
   constructor (kwikClient, Config) {
     this.transportClient = kwikClient
     this.delayUntilRefresh = Config.get('kwikng.timeout')
+    this.tokenCacheKeyName = Config.get('kwikng.tokenCacheKeyName')
     // this.tokenCacheDriver = Config.get('kwikng.refreshTokenCacheDriver')
     this.credentials = {
       email: Config.get('kwikng.email'),
@@ -14,7 +15,7 @@ class RefreshKwikToken {
   async handle ({ request, session }, next) {
     let error = null
     let response = { body: {} }
-    let tokenCacheStruct = JSON.parse(session.get('kwik_api_data') || 'null')
+    let tokenCacheStruct = JSON.parse(session.get(this.tokenCacheKeyName) || 'null')
 
     let now = Date.now()
     let diff = 0
@@ -46,6 +47,11 @@ class RefreshKwikToken {
           data = response.body.data
         }
       } else {
+        if(response.body.status === 201 &&
+          response.body.message === "Either your supplied Email ID or Password is incorrect"){
+          ; // the login failed due to incorrect credentials
+        }
+        
         data = { vendor_details: { vendor_id: '', user_id: '' }, access_token: '' }
         reqTimestamp = now
       }
@@ -56,7 +62,7 @@ class RefreshKwikToken {
     this.transportClient.userId = data.vendor_details.user_id
     this.transportClient.cardId = data.vendor_details.card_id
 
-    session.put('kwik_api_data', JSON.stringify({ data, reqTimestamp }))
+    session.put(this.tokenCacheKeyName, JSON.stringify({ data, reqTimestamp }))
 
     await next()
   }
