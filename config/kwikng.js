@@ -26,7 +26,7 @@ module.exports = {
    |
    */
 
-  password: Env.get('KWKNG_API_LOGIN_PASSWORD', 'xxxxxxxxxxxxx'),
+  password: Env.get('KWIKNG_API_LOGIN_PASSWORD', 'xxxxxxxxxxxxx'),
 
   /*
    |--------------------------------------------------------------------------
@@ -50,6 +50,18 @@ module.exports = {
    |
    */
 
-  timeout: Env.get('KWIKNG_API_LOGIN_TIMEOUT', '480000')
+  timeout: Env.get('KWIKNG_API_LOGIN_TIMEOUT', '480000'),
+  
+  /*
+   |--------------------------------------------------------------------------
+   | Cache Key Name
+   |--------------------------------------------------------------------------
+   |
+   |
+   |
+   |
+   */
+
+  tokenCacheKeyName: Env.get('KWIKNG_API_LOGIN_CACHE_KEYNAME', 'kwik_api_data')
 
 }
