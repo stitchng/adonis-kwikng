@@ -51,7 +51,7 @@ module.exports = {
    */
 
   timeout: Env.get('KWIKNG_API_LOGIN_TIMEOUT', '480000'),
-  
+
   /*
    |--------------------------------------------------------------------------
    | Cache Key Name

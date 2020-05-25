@@ -1,6 +1,6 @@
 {
   "name": "adonisjs-kwikng",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An addon/plugin package to provide KwikNG automated last-mile delivery services in AdonisJS 4.1+",
   "main": "index.js",
   "files": [
@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@adonisjs/generic-exceptions": "^2.0.1",
-    "kwik-node": "^0.0.2",
+    "kwik-node": "^0.0.5",
     "debug": "^3.1.2"
   },
   "devDependencies": {
