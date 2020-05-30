@@ -7,7 +7,7 @@ _Initial Release_
 - None
 
 <a name="0.0.2"></a>
-# 0.0.2 (2020-06-04)
+# 0.0.2 (2020-05-30)
 
 _Initial Release_
 

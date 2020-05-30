@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@adonisjs/generic-exceptions": "^2.0.1",
-    "kwik-node": "^0.0.5",
+    "kwik-node": "~0.0.5",
     "debug": "^3.1.2"
   },
   "devDependencies": {
