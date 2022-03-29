@@ -41,25 +41,23 @@ An addon/plugin package to provide KwikNG automated last-mile delivery services 
           ]
       }
       
-      async requestDelivery({ request, response }){
+      async requestDelivery({ request, params, response }){
       
-          let user = await User.find(1) // get user from database
+          let user = await User.find(params.user_id) // get user from database
 
           let response = await Kwik.API.scheduleDeliveryTask({
-                  insurance_amount: 0, 
-                  pickup_delivery_relationship: 0, 
-                  fleet_id:"", 
-                  payment_method: '131072' /* paga wallet payment */, 
+                  pickup_delivery_relationship: 0,
+                  payment_method: 131072 /* PAGA wallet payment */, 
                   is_multiple_tasks: 1, 
                   has_pickup: 1, 
                   has_delivery: 1, 
                   timezone: '+60' /* West African Time: +1:00hr from UTC */, 
                   auto_assignment: 0, 
                   layout_type: 0, 
-                  team_id: 1,
+                  team_id: 1 /* get your 'team_id' from your admin dashboard */,
                   amount: "1240.45", // Naira
-                  total_no_of_tasks: 1,
-                  total_service_charge: 23,
+                  total_no_of_tasks: 1 /* get this value from Kwik.API.getExactPricingForDeliveryTask() */,
+                  total_service_charge: 0 /* get this value from Kwik.API.getExactPricingForDeliveryTask() */,
                   deliveries: [
                     {
                       "address": "No 4 Awgu Close, Garki, Area 3, Abuja",
@@ -68,6 +66,7 @@ An addon/plugin package to provide KwikNG automated last-mile delivery services 
                       "longitude": 7.4349443,
                       "time": "2020-12-20 12:48:24",
                       "phone": user.phone, // user phone number
+                      "email": user.email, // user email
                       "has_return_task": false,
                       "is_package_insured": 0,
                       "template_data": [ ]
@@ -81,14 +80,13 @@ An addon/plugin package to provide KwikNG automated last-mile delivery services 
                       "longitude": 7.4220623,
                       "time": "2020-12-20 11:27:11",
                       "phone": "+2349045739731",
-                      "email": "dzyn.fash.ng@gmail.com",
-                      "template_data": [ ]
+                      "email": "dzyn.fash.ng@gmail.com"
                     }
                   ]
           
           });
           
-          this.event.fire('mixpanel::event', { key: 'deliveryDispatched' });
+          this.event.fire('mixpanel::event', { key: 'delivery_dispatched' });
           
           return response.status(201).json({
              data:response.body.data
