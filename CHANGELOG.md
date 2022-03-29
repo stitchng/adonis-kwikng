@@ -1,3 +1,12 @@
+<a name="0.0.4"></a>
+# 0.0.4 (2022-03-29)
+
+### Bug Fixes
+- None
+
+### Added Feature
+- Dependency update : **kwik-node** _v0.0.8_
+
 <a name="0.0.3"></a>
 # 0.0.3 (2020-12-01)
 
